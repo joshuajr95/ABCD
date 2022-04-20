@@ -1,0 +1,3 @@
+float64 distance_front
+float64 distance_left
+float64 distance_right
