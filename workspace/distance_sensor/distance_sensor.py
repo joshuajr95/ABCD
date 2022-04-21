@@ -73,7 +73,7 @@ def read_sensors():
 
 def main():
 	# rate to read distance sensor does not need to be particularly fast
-	distance_read_rate = 5
+	distance_read_rate = 20
 	
 	# initialize the node and create the publisher and timer
 	rospy.init_node("distance_sensor_node")
