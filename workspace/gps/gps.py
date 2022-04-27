@@ -72,7 +72,7 @@ def read_GPS(encoding, ser):
 def main():
 	
 	# variable to store the rate at which the GPS data is read
-	gps_read_rate = 2
+	gps_read_rate = 1 
 	
 	# initialize the node and create publisher and timer
 	rospy.init_node('gps_node')
