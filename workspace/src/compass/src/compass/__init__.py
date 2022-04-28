@@ -1,1 +1,1 @@
-from compass import main
+from compass.compass import main

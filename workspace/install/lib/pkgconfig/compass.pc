@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/Desktop/ABCD/workspace/install
+
+Name: compass
+Description: Description of compass
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -lcompass
+Requires: 

@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/Desktop/ABCD/workspace/install
+
+Name: distance_sensor
+Description: Description of distance_sensor
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -ldistance_sensor
+Requires: 

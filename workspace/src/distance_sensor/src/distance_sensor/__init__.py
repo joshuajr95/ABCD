@@ -1,1 +1,1 @@
-from distance_sensor import main
+from distance_sensor.distance_sensor import main

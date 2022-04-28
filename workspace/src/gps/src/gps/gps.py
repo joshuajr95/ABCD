@@ -20,9 +20,13 @@ def GPS_Info(NMEA_buff):
     nmea_longitude = []
     nmea_latitude = NMEA_buff[1]            #extract latitude from GPGGA string
     nmea_longitude = NMEA_buff[3]           #extract longitude from GPGGA string
-    
-    lat = float(nmea_latitude)              #convert string into float for calculation
-    longi = float(nmea_longitude)           #convertr string into float for calculation
+    try:
+        lat = float(nmea_latitude)              #convert string into float for calculation
+        longi = float(nmea_longitude)           #convertr string into float for calculation
+
+    except ValueError:
+        print("Could not convert.")
+        return 0, 0
     
     lat_in_degrees = convert_to_degrees(lat)    #get latitude in degree decimal format
     long_in_degrees = convert_to_degrees(longi) #get longitude in degree decimal format
@@ -76,30 +80,32 @@ def main():
 	
 	# initialize the node and create publisher and timer
 	rospy.init_node('gps_node')
-	gps_publisher = rospy.Publisher('gps_data', gps_data)
+	gps_publisher = rospy.Publisher('gps_data', gps_data, queue_size=1)
 	timer = rospy.Rate(gps_read_rate)
+	
+	print("Running...")
 	
 	try:
 		gpgga_info, ser = init_GPS() # Init GPS. Returns serial object and the GPS encoding type
 		
-    	while not rospy.is_shutdown():
-    		lat_deg, lon_deg = read_GPS(gpgga_info, ser) # Query current position
+		while not rospy.is_shutdown():
+			lat_deg, lon_deg = read_GPS(gpgga_info, ser) # Query current position
     		
-    		# create and fill gps_data message for publishing
-    		gps_msg = gps_data()
-    		gps_msg.latitude = lat_deg
-    		gps_msg.longitude = long_deg
+			# create and fill gps_data message for publishing
+			gps_msg = gps_data()
+			gps_msg.latitude = lat_deg
+			gps_msg.longitude = lon_deg
     		
-    		#publish the data
-    		gps_publisher.publish(gps_msg)
-    		
-    		timer.sleep()
+			#publish the data
+			gps_publisher.publish(gps_msg)
+
+			timer.sleep()
     		
 
 	except rospy.ROSInterruptException:
 		print("An unknown error occurred")
 		
-    except KeyboardInterrupt:
-        print("Measurement stopped by User")
+	except KeyboardInterrupt:
+		print("Measurement stopped by User")
 
 

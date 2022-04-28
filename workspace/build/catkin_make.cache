@@ -1,0 +1,2 @@
+collision_detection:compass:distance_sensor:executive:gps:localization:motor_control:navigation
+-DCATKIN_DEVEL_PREFIX=/home/ubuntu/Desktop/ABCD/workspace/devel -DCMAKE_INSTALL_PREFIX=/home/ubuntu/Desktop/ABCD/workspace/install -G Unix Makefiles

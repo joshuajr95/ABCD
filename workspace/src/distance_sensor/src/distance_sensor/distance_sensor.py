@@ -8,12 +8,12 @@ import rospy
 from distance_sensor.msg import Distance
  
 
-TRIGGER_FRONT = 24
-ECHO_FRONT = 23
+TRIGGER_FRONT = 17
+ECHO_FRONT =  27
 
-TRIGGER_LEFT = 17
-ECHO_LEFT = 27
-         
+TRIGGER_LEFT = 12
+ECHO_LEFT = 16
+
 TRIGGER_RIGHT = 5
 ECHO_RIGHT = 6
  
@@ -72,32 +72,41 @@ def read_sensors():
     return dist_front, dist_left, dist_right # Return tuple containing each distance reading
 
 def main():
-	# rate to read distance sensor does not need to be particularly fast
-	distance_read_rate = 20
-	
-	# initialize the node and create the publisher and timer
-	rospy.init_node("distance_sensor_node")
-	distance_publisher = rospy.Publisher("distance", Distance)
-	timer = rospy.Rate(distance_read_rate)
-	
-	try:
+    # rate to read distance sensor does not need to be particularly fast
+    distance_read_rate = 20
+
+    # initialize the node and create the publisher and timer
+    rospy.init_node("distance_sensor_node")
+    distance_publisher = rospy.Publisher("distance", Distance, queue_size=1)
+    timer = rospy.Rate(distance_read_rate)
+    
+    print("Running...")
+
+    try:
+        print("Before sensor init")
         init_sensors()
+        print("After sensor init")
         while not rospy.is_shutdown():
+            print("Before sensor read")
         	# read sensor data
             df, dl, dr = read_sensors()
+            
+            print("After sensor read")
+            
+            print(f"df is {df}, dl is {dl}, and dr is {dr}")
             
             # create and fill distance message to be published
             distances = Distance()
             distances.distance_front = df
             distances.distance_left = dl
-            distances.distance_right dr
+            distances.distance_right = dr
             
             # publish distance 
             distance_publisher.publish(distances)
             
             timer.sleep()
  
-	# Reset by pressing CTRL + C
+    # Reset by pressing CTRL + C
     except KeyboardInterrupt:
         print("Measurement stopped by User")
         GPIO.cleanup()

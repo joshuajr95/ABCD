@@ -1,0 +1,9 @@
+#! /usr/bin/python3
+
+
+import rospy
+import compass
+
+
+if __name__ == "__main__":
+	compass.main()
