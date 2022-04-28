@@ -1,0 +1,8 @@
+#! /usr/bin/python3
+
+import rospy
+import motor_control
+
+
+if __name__ == "__main__":
+	motor_control.main()
