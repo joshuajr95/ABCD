@@ -1,1 +1,1 @@
-from localization import main
+from localization.localization import main
