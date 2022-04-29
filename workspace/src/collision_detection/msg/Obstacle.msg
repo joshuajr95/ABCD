@@ -1,2 +1,2 @@
-geometry_msgs/Point pos
-float32 priority
+float64 distance
+float64 priority

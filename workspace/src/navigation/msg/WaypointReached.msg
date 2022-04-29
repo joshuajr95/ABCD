@@ -1,0 +1,3 @@
+float32 latitude
+float32 longitude
+int32 waypoint_number

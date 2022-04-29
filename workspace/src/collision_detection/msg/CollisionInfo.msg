@@ -1,1 +1,3 @@
-Obstacle[] obstacles
+Obstacle left
+Obstacle center
+Obstacle right
