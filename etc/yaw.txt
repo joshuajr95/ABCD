@@ -1,0 +1,14 @@
+geometry_msgs::Quaternion yaw_to_quaternion( const double& yaw ){
+	geometry_msgs::Quaternion quaternion;
+	quaternion.w = cos( yaw / 2.0 );
+	quaternion.x = 0.0;
+	quaternion.y = 0.0;
+	quaternion.z = sin( yaw / 2.0 );
+	return quaternion;
+}
+double quaternion_to_yaw( const geometry_msgs::Quaternion& quaternion){
+	// your implementation here
+	double yaw;
+	yaw = atan2(2.0*(quaternion.y*quaternion.z + quaternion.w*quaternion.x), quaternion.w*quaternion.w - quaternion.x*quaternion.x - quaternion.y*quaternion.y + quaternion.z*quaternion.z);
+	return yaw;
+}
