@@ -40,9 +40,9 @@ class MotorSpeed {
   static serialize(obj, buffer, bufferOffset) {
     // Serializes a message object of type MotorSpeed
     // Serialize message field [left_speed]
-    bufferOffset = _serializer.int8(obj.left_speed, buffer, bufferOffset);
+    bufferOffset = _serializer.int32(obj.left_speed, buffer, bufferOffset);
     // Serialize message field [right_speed]
-    bufferOffset = _serializer.int8(obj.right_speed, buffer, bufferOffset);
+    bufferOffset = _serializer.int32(obj.right_speed, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -51,14 +51,14 @@ class MotorSpeed {
     let len;
     let data = new MotorSpeed(null);
     // Deserialize message field [left_speed]
-    data.left_speed = _deserializer.int8(buffer, bufferOffset);
+    data.left_speed = _deserializer.int32(buffer, bufferOffset);
     // Deserialize message field [right_speed]
-    data.right_speed = _deserializer.int8(buffer, bufferOffset);
+    data.right_speed = _deserializer.int32(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 2;
+    return 8;
   }
 
   static datatype() {
@@ -68,14 +68,15 @@ class MotorSpeed {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '484d956611ab81479ec19d6a5dc9c74a';
+    return 'a1bb444c72094386d869a17dd234b23b';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
-    int8 left_speed
-    int8 right_speed
+    int32 left_speed
+    int32 right_speed
+    
     `;
   }
 

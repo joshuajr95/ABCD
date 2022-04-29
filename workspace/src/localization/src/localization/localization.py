@@ -7,12 +7,13 @@ import math
 from geopy import distance
 
 from geometry_msgs.msg import Pose
+from geometry_msgs.msg import Quaternion
 from gps.msg import gps_data
 from compass.msg import CompassBearing
 from navigation.msg import MotorSpeed
 
 
-def yaw_to_quaternion(angle):
+def yaw_to_quaternion(yaw):
 	quaternion = Quaternion()
 	quaternion.w = math.cos( yaw / 2.0 )
 	quaternion.x = 0.0
@@ -71,7 +72,7 @@ class EKF_Localization:
 	
 
 	# callback function to handle published motor speed data
-	def handle_motor_speed(motor_speed):
+	def handle_motor_speed(self, motor_speed):
 		self.speeds = motor_speed
 
 	
@@ -110,7 +111,7 @@ class EKF_Localization:
 
 
 		# measurement update
-		if self.gpsdata is not None and len(compass_bearing) > 0:
+		if self.gpsdata is not None and len(self.compass_bearings) > 0:
 
 			z = np.zeros(3)
 			z[0] = self.gpsdata.longitude

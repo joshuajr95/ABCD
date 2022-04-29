@@ -1,2 +1,2 @@
-int8 left_speed
-int8 right_speed
+int32 left_speed
+int32 right_speed

@@ -4,6 +4,7 @@
 import rospy
 import math
 from geometry_msgs.msg import Pose
+from geometry_msgs.msg import Quaternion
 from collision_detection.msg import CollisionInfo
 from executive.msg import Waypoint
 from gps.msg import gps_data
@@ -11,7 +12,7 @@ from navigation.msg import MotorSpeed
 from navigation.msg import WaypointReached
 
 
-def yaw_to_quaternion(angle):
+def yaw_to_quaternion(yaw):
 	quaternion = Quaternion()
 	quaternion.w = math.cos( yaw / 2.0 )
 	quaternion.x = 0.0

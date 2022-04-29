@@ -35,10 +35,10 @@ struct MotorSpeed_
 
 
 
-   typedef int8_t _left_speed_type;
+   typedef int32_t _left_speed_type;
   _left_speed_type left_speed;
 
-   typedef int8_t _right_speed_type;
+   typedef int32_t _right_speed_type;
   _right_speed_type right_speed;
 
 
@@ -128,12 +128,12 @@ struct MD5Sum< ::navigation::MotorSpeed_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "484d956611ab81479ec19d6a5dc9c74a";
+    return "a1bb444c72094386d869a17dd234b23b";
   }
 
   static const char* value(const ::navigation::MotorSpeed_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x484d956611ab8147ULL;
-  static const uint64_t static_value2 = 0x9ec19d6a5dc9c74aULL;
+  static const uint64_t static_value1 = 0xa1bb444c72094386ULL;
+  static const uint64_t static_value2 = 0xd869a17dd234b23bULL;
 };
 
 template<class ContainerAllocator>
@@ -152,8 +152,8 @@ struct Definition< ::navigation::MotorSpeed_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "int8 left_speed\n"
-"int8 right_speed\n"
+    return "int32 left_speed\n"
+"int32 right_speed\n"
 ;
   }
 
@@ -193,9 +193,9 @@ struct Printer< ::navigation::MotorSpeed_<ContainerAllocator> >
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::navigation::MotorSpeed_<ContainerAllocator>& v)
   {
     s << indent << "left_speed: ";
-    Printer<int8_t>::stream(s, indent + "  ", v.left_speed);
+    Printer<int32_t>::stream(s, indent + "  ", v.left_speed);
     s << indent << "right_speed: ";
-    Printer<int8_t>::stream(s, indent + "  ", v.right_speed);
+    Printer<int32_t>::stream(s, indent + "  ", v.right_speed);
   }
 };
 

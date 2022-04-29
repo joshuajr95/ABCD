@@ -1,0 +1,9 @@
+<launch>
+	<node name="collision_detection_node" pkg="collision_detection" type="collision_detection_node"/>
+	<node name="compass_node" pkg="compass" type="compass_node"/>
+	<node name="distance_sensor_node" pkg="distance_sensor" type="distance_sensor_node"/>
+	<node name="gps_node" pkg="gps" type="gps_node"/>
+	<node name="localization_node" pkg="localization" type="localization_node"/>
+	<node name="motor_control_node" pkg="motor_control" type="motor_control_node"/>
+	<node name="navigation_node" pkg="navigation" type="navigation_node"/>
+</launch>

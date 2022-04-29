@@ -8,13 +8,14 @@ import struct
 
 
 class MotorSpeed(genpy.Message):
-  _md5sum = "484d956611ab81479ec19d6a5dc9c74a"
+  _md5sum = "a1bb444c72094386d869a17dd234b23b"
   _type = "navigation/MotorSpeed"
   _has_header = False  # flag to mark the presence of a Header object
-  _full_text = """int8 left_speed
-int8 right_speed"""
+  _full_text = """int32 left_speed
+int32 right_speed
+"""
   __slots__ = ['left_speed','right_speed']
-  _slot_types = ['int8','int8']
+  _slot_types = ['int32','int32']
 
   def __init__(self, *args, **kwds):
     """
@@ -54,7 +55,7 @@ int8 right_speed"""
     """
     try:
       _x = self
-      buff.write(_get_struct_2b().pack(_x.left_speed, _x.right_speed))
+      buff.write(_get_struct_2i().pack(_x.left_speed, _x.right_speed))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -69,8 +70,8 @@ int8 right_speed"""
       end = 0
       _x = self
       start = end
-      end += 2
-      (_x.left_speed, _x.right_speed,) = _get_struct_2b().unpack(str[start:end])
+      end += 8
+      (_x.left_speed, _x.right_speed,) = _get_struct_2i().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -84,7 +85,7 @@ int8 right_speed"""
     """
     try:
       _x = self
-      buff.write(_get_struct_2b().pack(_x.left_speed, _x.right_speed))
+      buff.write(_get_struct_2i().pack(_x.left_speed, _x.right_speed))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -100,8 +101,8 @@ int8 right_speed"""
       end = 0
       _x = self
       start = end
-      end += 2
-      (_x.left_speed, _x.right_speed,) = _get_struct_2b().unpack(str[start:end])
+      end += 8
+      (_x.left_speed, _x.right_speed,) = _get_struct_2i().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -110,9 +111,9 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_2b = None
-def _get_struct_2b():
-    global _struct_2b
-    if _struct_2b is None:
-        _struct_2b = struct.Struct("<2b")
-    return _struct_2b
+_struct_2i = None
+def _get_struct_2i():
+    global _struct_2i
+    if _struct_2i is None:
+        _struct_2i = struct.Struct("<2i")
+    return _struct_2i
