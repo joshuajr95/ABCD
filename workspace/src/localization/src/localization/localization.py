@@ -146,7 +146,7 @@ def main():
 	gps_subscriber = rospy.Subscriber('gps_data', gps_data, handle_GPS)
 	compass_subscriber = rospy.Subscriber('CompassBearing', CompassBearing, handle_compass)
 	motion_subscriber = rospy.subscriber('motor_speed', MotorSpeed, handle_motor_speed)
-	pose_publisher = rospy.publisher('pose', geometry_msgs/Pose)
+	pose_publisher = rospy.publisher('pose', Pose, queue_size=1)
 	
 	mu0 = None
 	sigma0 = None
