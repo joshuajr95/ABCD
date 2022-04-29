@@ -16,7 +16,7 @@ class MotorControl:
 					bytesize=serial.EIGHTBITS,
      				write_timeout=0.1) 
 
-		self.ser # Return the serial object
+		self.ser = ser # Return the serial object
 
 	def __init__(self):
 		self.init_motor()
@@ -47,6 +47,8 @@ def main():
 	controller = MotorControl()
 	
 	motor_speed_subscriber = rospy.Subscriber("motor_speed", MotorSpeed, controller.setMotorSpeed)
+	
+	print("Running...")
 	
 	rospy.spin()
 	

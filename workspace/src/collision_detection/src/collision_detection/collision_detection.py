@@ -4,12 +4,19 @@
 import rospy
 from collision_detection.msg import CollisionInfo, Obstacle
 from distance_sensor.msg import Distance
+from geometry_msgs.msg import Pose
 
 
 class CollisionDetection:
 	
-	def __init__(self, range_max=10):
+	def __init__(self, range_max=250):
 		self.range_max = range_max
+		self.distances = Distance()
+		self.distances.distance_left = self.range_max
+		self.distances.distance_front = self.range_max
+		self.distances.distance_right = self.range_max
+		
+		self.pose = Pose()
 
 	def handle_distances(self, distances):
 		self.distances = distances
@@ -31,8 +38,8 @@ class CollisionDetection:
 		obstacle_right.priority = 1/self.distances.distance_right
 
 		obstacle_center = Obstacle()
-		obstacle_center.distance = self.distances.distance_center
-		obstacle_center.priority = 1/self.distances.distance_center
+		obstacle_center.distance = self.distances.distance_front
+		obstacle_center.priority = 1/self.distances.distance_front
 
 		obstacles.left = obstacle_left
 		obstacles.center = obstacle_center
@@ -57,11 +64,12 @@ def main():
 	pose_subscriber = rospy.Subscriber("pose", Pose, detector.handle_pose)
 	alert_publisher = rospy.Publisher("collision_alert", CollisionInfo, queue_size=1)
 
+	print("Running...")
 	while not rospy.is_shutdown():
 
 		collisions = detector.detect()
 
-		alert_publisher.publish(collision)
+		alert_publisher.publish(collisions)
 
 		timer.sleep()
 

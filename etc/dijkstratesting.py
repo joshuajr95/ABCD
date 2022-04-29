@@ -87,7 +87,7 @@ def takeTrip(path, intersections):
 def main():
     graph = dijkstra.Graph() # create a graph object
     intersections = list() # object to store intersection data
-    read_vertices(graph, intersections, 'ur.txt') # fill graph object with data from file
+    read_vertices(graph, intersections, 'ur_limited.txt') # fill graph object with data from file
     # text file must list all intersections before all edges
     path = planTrip(graph, intersections)
     takeTrip(path, intersections)
