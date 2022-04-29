@@ -3,6 +3,11 @@
 
 import rospy
 from geometry_msgs.msg import Pose
+from collision_detection.msg import CollisionInfo
+from executive.msg import Waypoint
+from gps.msg import gps_data
+from navigation.msg import MotorSpeed
+from navigation.msg import WaypointReached
 
 
 class Navigation:
@@ -10,7 +15,7 @@ class Navigation:
     def __init__(self):
         self.is_reached = False
 
-    def handle_GPS(self. gpsdata):
+    def handle_GPS(self, gpsdata):
         self.gps_pos = gpsdata
 
     def handle_pose(self, pose):

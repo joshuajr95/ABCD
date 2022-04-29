@@ -14,3 +14,13 @@ def init_Magnetometer():
 def read_magnetometer(sensor):
 	return sensor.get_bearing()
 
+
+if __name__ == '__main__':
+    try:
+        sensor = init_Magnetometer()
+        while(True):
+            bearing = read_magnetometer(sensor)
+            print("Bearing: " + str(bearing))
+            sleep(10)
+    except KeyboardInterrupt:
+        print("Measurement stopped by User")

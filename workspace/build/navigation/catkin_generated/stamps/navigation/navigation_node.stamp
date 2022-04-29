@@ -1,0 +1,8 @@
+#! /usr/bin/python3
+
+import rospy
+import navigation
+
+
+if __name__ == "__main__":
+    navigation.main()

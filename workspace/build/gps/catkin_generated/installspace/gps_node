@@ -2,8 +2,6 @@
 
 
 import rospy
-
-
 import gps
 
 
