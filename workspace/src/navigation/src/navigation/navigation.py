@@ -11,11 +11,18 @@ from navigation.msg import MotorSpeed
 from navigation.msg import WaypointReached
 
 
-def yaw_to_quaternion(quaternion):
-	pass
+def yaw_to_quaternion(angle):
+	quaternion = Quaternion()
+	quaternion.w = math.cos( yaw / 2.0 )
+	quaternion.x = 0.0
+	quaternion.y = 0.0
+	quaternion.z = math.sin( yaw / 2.0 )
+	return quaternion
 
-def quaternion_to_yaw(yaw):
-	pass
+
+def quaternion_to_yaw(quaternion):
+	yaw = math.atan2(2.0*(quaternion.y*quaternion.z + quaternion.w*quaternion.x), quaternion.w*quaternion.w - quaternion.x*quaternion.x - quaternion.y*quaternion.y + quaternion.z*quaternion.z)
+	return yaw
 
 
 class Navigation:
