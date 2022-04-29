@@ -1,1 +1,1 @@
-from collision_detection import main
+from collision_detection.collision_detection import main
