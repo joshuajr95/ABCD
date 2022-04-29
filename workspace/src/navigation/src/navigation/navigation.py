@@ -10,6 +10,8 @@ class Navigation:
     def __init__(self):
         self.is_reached = False
 
+    def handle_GPS(self. gpsdata):
+        self.gps_pos = gpsdata
 
     def handle_pose(self, pose):
         self.pose = pose
@@ -37,6 +39,7 @@ def main():
     pose_subscriber = rospy.Subscriber('pose', Pose, navigator.handle_pose)
     collision_subscriber = rospy.Subscriber("collision_alert", CollisionInfo, navigator.handle_collision_info)
     waypoint_subscriber = rospy.Subscriber("waypoint", Waypoint, navigator.handle_waypoint)
+    gps_subscriber = rospy.Subscriber("gps_data", gps_data, navigator.handle_GPS)
 
     motor_speed_publisher = rospy.Publisher("motor_speed", MotorSpeed, queue_size=1)
     reached_waypoint_publisher = rospy.Publisher("waypoint_reached", WaypointReached, queue_size=1)

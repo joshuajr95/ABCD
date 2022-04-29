@@ -16,7 +16,7 @@ class Executive:
         pass
     
     def handle_GPS(self, gpsdata):
-        if self.gpsdata is None:
+        if self.starting_pos is None:
             self.starting_pos = gpsdata
             self.generate_waypoints()
     
